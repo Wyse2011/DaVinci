@@ -1,0 +1,39 @@
+name: Build
+
+# Compiles DaVinci against the latest Dalamud on every push and pull request,
+# so build errors show up on GitHub even before anyone loads it in game.
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-2022
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v5
+
+    - name: Install .NET
+      uses: actions/setup-dotnet@v5
+      with:
+        dotnet-version: 10.0.x
+
+    - name: Download Dalamud
+      run: |
+        Invoke-WebRequest -Uri https://goatcorp.github.io/dalamud-distrib/latest.zip -OutFile latest.zip
+        Expand-Archive -Force latest.zip "$env:AppData\XIVLauncher\addon\Hooks\dev"
+
+    - name: Build
+      run: dotnet build --configuration Release
+
+    - name: Upload plugin
+      uses: actions/upload-artifact@v4
+      with:
+        name: DaVinci
+        path: .\DaVinci\bin\x64\Release\DaVinci\*
+        if-no-files-found: error
+        retention-days: 7

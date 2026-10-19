@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Dalamud.NET.Sdk/15.0.0">
+  <PropertyGroup>
+    <Version>0.0.1.0</Version>
+    <!-- Manifest fields used by DalamudPackager. TODO: set Author and RepoUrl before publishing. -->
+    <Author>your name here</Author>
+    <RepoUrl>https://github.com/YOUR-USERNAME/DaVinci</RepoUrl>
+    <Name>DaVinci</Name>
+    <Punchline>Paint every section of every furnishing, shared with everyone in the room.</Punchline>
+    <Description>Customize the colors of every section of every furnishing in a room. Client-side and visual only.</Description>
+    <Tags>housing;furniture;dye;penumbra</Tags>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+</Project>

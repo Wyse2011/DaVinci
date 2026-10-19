@@ -1,0 +1,14 @@
+# Build output
+bin/
+obj/
+
+# IDE files
+.vs/
+.idea/
+*.user
+*.suo
+*.DotSettings.user
+
+# OS clutter
+Thumbs.db
+.DS_Store
